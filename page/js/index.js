@@ -60,7 +60,7 @@ var articleList = new Vue({
         // 翻页点击跳转
         jumpTo() {
            return function (page) {
-               this.getPage(page, this.pageSize);
+               this.getBlog(page, this.pageSize);
            } 
         },
         // 获取翻页对应的博客数
