@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="title"><a href="/">我的个人博客 | 技术博客</a></div>
+            <ul class="menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="sitemap.html">地图</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="guestbook.html">留言</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content container clear">
+        <div class="content_left">
+            <!-- 每日一句 -->
+            <div class="everyday" id="everyday">
+                <h6>每日一句<i class="ic-bullhorn"></i></h6>
+                <p>{{getContent}}</p>
+            </div>
+            <!-- 文章列表 -->
+            <div class="article_list" id="articleList">
+                <div class="article_single" v-for="(item, index) in articleList">
+                    <div class="article_title">
+                        <a :href="item.link">{{item.title}}</a>
+                    </div>
+                    <div class="article_cont">
+                        <p href="#">{{item.content}}</p>
+                    </div>
+                    <div class="article_foot">
+                        <p>发布于{{item.date}} | 浏览({{item.views}}) | Tags：<a href="#">{{item.tags}}</a></p>
+                    </div>
+                </div>
+                <div class="page_tool">
+                    <ul>
+                        <li
+                            v-for="(item, index) in pageNumList"
+                            :key="index"
+                            :class="{active: item.text == page}"
+                            @click="jumpTo(item.page)"
+                        >
+                            {{item.text}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content_right">
+            <!-- 随机标签云 -->
+            <div class="module_box module_tag" id="randomTags">
+                <div class="module_title">随机标签云</div>
+                <div class="module_cont">
+                    <ul>
+                        <li v-for="(item, index) in tags" :key="index">
+                            <a :href="'/?tag=' + item" :style="{color:randomColor(), fontSize:randomSize()}">{{item}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 最近热门 -->
+            <div class="module_box module_hot" id="recentHot">
+                <div class="module_title">最近热门</div>
+                <div class="module_cont">
+                    <ul>
+                        <li v-for="(item, index) in titleList" :key="index">
+                            <a :href="item.link">{{item.title}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 最新评论 -->
+            <div class="module_box module_comment" id="newComment">
+                <div class="module_title">最新评论</div>
+                <div class="module_cont">
+                    <ul>
+                        <li v-for="(item, index) in commentList" :key="index">
+                            <div class="clear">
+                                <span class="name">{{item.name}}</span>
+                                <span class="time">[{{item.date}}]</span>
+                            </div>
+                            <a :href="item.link">{{item.comment}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Copyright © 2010-2017 zhouyy个人博客 All rights reserved</p>
+    </footer>
+    <script src="./js/base.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

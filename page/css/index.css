@@ -1,0 +1,59 @@
+a:hover {
+    color: #337ab7;
+}
+
+/* 每日一句 */
+.everyday {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    box-shadow:  1px 1px 10px rgba(0, 0, 0, 0.6);
+}
+.everyday h6 {
+    color: #21af32;
+}
+.everyday p {
+    width: 100%;
+    margin-top: 10px;
+}
+.everyday span {
+    float: right;
+}
+.everyday .ic-bullhorn {
+    margin-left: 5px;
+}
+
+/* 文章列表 */
+.article_single {
+    margin-top: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #bfbfbf;
+}
+.article_title {
+    padding: 25px 15px 10px;
+}
+.article_title a {
+    display: block;
+    font-size: 20px;
+    color: #23202b;
+}
+.article_cont {
+    padding: 0 15px 25px;
+}
+.article_cont p {
+    height: 80px;
+    line-height: 20px;
+    color: #333;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+.article_foot {
+    padding: 10px 10px;
+    background: #000;
+}
+.article_foot * {
+    color: #eee;
+}

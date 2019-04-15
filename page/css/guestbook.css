@@ -1,0 +1,13 @@
+.description {
+    background: white;
+    width: 96%;
+    border-radius: 5px;
+    padding: 30px 15px 30px 15px;
+    box-shadow: 3px 4px 3px #888888;
+    text-align: left;
+}
+.description p {
+    margin-top: 12px;
+    padding: 0px 0px 0px 10px;
+    font-size: 14px;
+}

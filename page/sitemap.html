@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/sitemap.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+
+<body>
+    <header class="header">
+    <div class="container">
+        <div class="title"><a href="/">我的个人博客 | 技术博客</a></div>
+        <ul class="menu">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="sitemap.html">地图</a></li>
+            <li><a href="about.html">关于</a></li>
+            <li><a href="guestbook.html">留言</a></li>
+        </ul>
+        <div class="search_bar">
+            <input type="text" placeholder="输入关键词查找">
+            <button>搜索</button>
+        </div>
+    </div>
+</header>
+    <div class="content container">
+        <div class="blog_list" id="blog_list">
+            <h1>最新文章</h1>
+            <ul>
+                <li v-for="(item, index) in blogList" :key="index">
+                    <a :href="item.link">{{item.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./js/sitemap.js"></script>
+</body>
+
+</html>
