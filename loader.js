@@ -1,19 +1,23 @@
-let fs = require('fs');
-let globalConf = require('./config.js');
-let dirs = fs.readdirSync(globalConf['web_path']); // 读取路径
-let pathMap = new Map();
+var fs =require("fs");
+var globalConfig = require("./config");
 
-dirs.forEach(ele => {
-    var tempObj = require('./' + globalConf['web_path'] + '/' + ele);
-    if (tempObj.path) {
-        for (let [key,val] of tempObj.path) {
+var controllerSet = [];
+var pathMap = new Map();
+
+var files = fs.readdirSync(globalConfig["web_path"]);
+
+for (var i = 0 ; i < files.length ; i ++) {
+    var temp = require("./" + globalConfig["web_path"] + "/" + files[i]);
+    if (temp.path) {
+        for (var [key, value] of temp.path) {
             if (pathMap.get(key) == null) {
-                pathMap.set(key, val);
+                pathMap.set(key, value);
             } else {
-                throw new Error('url path异常，url：' + key);
+                throw new Error("url path异常, url:" + key);
             }
         }
+        controllerSet.push(temp);
     }
-});
+}
 
 module.exports = pathMap;
