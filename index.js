@@ -56,6 +56,6 @@ app.get('/queryBlogCountByTag', loader.get('/queryBlogCountByTag'));
 
 
 // 监听端口
-app.listen(12306, function () {
+app.listen(globalConf['prot'], function () {
    console.log('服务已启动');
 });
