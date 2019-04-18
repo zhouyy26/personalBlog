@@ -73,7 +73,7 @@
                 <div class="module_cont">
                     <ul>
                         <li v-for="(item, index) in tags" :key="index">
-                            <a href="#" :style="{color:randomColor(), fontSize:randomSize()}">{{item}}</a>
+                            <a :href="'/?tag=' + item" :style="{color:randomColor(), fontSize:randomSize()}">{{item}}</a>
                         </li>
                     </ul>
                 </div>

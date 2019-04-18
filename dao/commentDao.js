@@ -1,10 +1,10 @@
-let dbutil = require('./dbUtil.js');
+const dbutil = require('./dbUtil.js');
 
 // 增加评论
 function insertComment(blogId, parent, parentName, userName, comments, email, ctime, utime, callback) {
-    var insertSql = 'insert into comments (`blog_id`, `parent`, `parent_name`, `user_name`, `comments`, `email`, `ctime`, `utime`) values (?, ?, ?, ?, ?, ?, ?, ?);';
-    var params = [blogId, parent, parentName, userName, comments, email, ctime, utime];
-    var connection = dbutil.createConnection();
+    let insertSql = 'insert into comments (`blog_id`, `parent`, `parent_name`, `user_name`, `comments`, `email`, `ctime`, `utime`) values (?, ?, ?, ?, ?, ?, ?, ?);';
+    let params = [blogId, parent, parentName, userName, comments, email, ctime, utime];
+    let connection = dbutil.createConnection();
     connection.connect();
     connection.query(insertSql, params, (error, result) => {
         if (error == null) {
@@ -18,9 +18,9 @@ function insertComment(blogId, parent, parentName, userName, comments, email, ct
 
 // 通过bid查询评论
 function queryCommentByBlogId(blogId, callback) {
-    var querySql = 'select * from comments where blog_id = ?;';
-    var params = [blogId];
-    var connection = dbutil.createConnection();
+    let querySql = 'select * from comments where blog_id = ?;';
+    let params = [blogId];
+    let connection = dbutil.createConnection();
     connection.connect();
     connection.query(querySql, params, (error, result) => {
         if (error == null) {
@@ -34,9 +34,9 @@ function queryCommentByBlogId(blogId, callback) {
 
 // 通过blogId查询评论总数
 function queryCommentCountByBlogId(blogId, callback) {
-    var querySql = 'select count(*) as count from comments where blog_id = ?;';
-    var params = [blogId];
-    var connection = dbutil.createConnection();
+    let querySql = 'select count(*) as count from comments where blog_id = ?;';
+    let params = [blogId];
+    let connection = dbutil.createConnection();
     connection.connect();
     connection.query(querySql, params, (error, result) => {
         if (error == null) {
@@ -50,9 +50,9 @@ function queryCommentCountByBlogId(blogId, callback) {
 
 // 获取最新评论
 function queryNewComment(size, callback) {
-    var querySql = 'select * from comments order by id desc limit ?;';
-    var params = [size];
-    var connection = dbutil.createConnection();
+    let querySql = 'select * from comments order by id desc limit ?;';
+    let params = [size];
+    let connection = dbutil.createConnection();
     connection.connect();
     connection.query(querySql, params, (error, result) => {
         if (error == null) {

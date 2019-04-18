@@ -1,10 +1,10 @@
-let url = require('url');
-let blogDao = require('../dao/blogDao.js');
-let tagDao = require('../dao/tagDao.js');
-let tagBlogMappingDao = require('../dao/tagBlogMappingDao.js');
-let timeUtil = require('../util/timeUtil.js');
-let respUtil = require('../util/respUtil.js');
-let path = new Map();
+const url = require('url');
+const blogDao = require('../dao/blogDao.js');
+const tagDao = require('../dao/tagDao.js');
+const tagBlogMappingDao = require('../dao/tagBlogMappingDao.js');
+const timeUtil = require('../util/timeUtil.js');
+const respUtil = require('../util/respUtil.js');
+const path = new Map();
 
 // 查询随机标签
 function queryRandomTags(request, response) {
@@ -21,13 +21,13 @@ path.set("/queryRandomTags", queryRandomTags);
 
 // 查询与tag对应的博客
 function queryBlogByTag(request, response) {
-    var params = url.parse(request.url, true).query;
+    let params = url.parse(request.url, true).query;
     // 查询tag
     tagDao.queryTag(params.tag, result => {
         if (result != null || result.length != 0) {
             // 根据tagId查询
             tagBlogMappingDao.queryByTagId(result[0].id, parseInt(params.page), parseInt(params.pageSize), result => {
-                var blogList = [];
+                let blogList = [];
                 result.forEach((ele, index) => {
                     blogDao.queryBlogById(ele.blog_id, result => {
                         blogList.push(result[0]);
@@ -58,7 +58,7 @@ function getResult(blogList, len, response) {
 
 // 查询与tag对应的博客数
 function queryBlogCountByTag(request, response) {
-    var params = url.parse(request.url, true).query;
+    let params = url.parse(request.url, true).query;
     // 查询tag
     tagDao.queryTag(params.tag, result => {
         if (result != null || result.length != 0) {

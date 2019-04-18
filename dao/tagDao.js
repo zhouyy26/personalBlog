@@ -1,10 +1,10 @@
-let dbutil = require('./dbUtil.js');
+const dbutil = require('./dbUtil.js');
 
 // 增加tag
 function insertTag(tag, ctime, utime, callback) {
-    var insertSql = 'insert into tags (`tag`, `ctime`, `utime`) values (?, ?, ?);';
-    var params = [tag, ctime, utime];
-    var connection = dbutil.createConnection();
+    let insertSql = 'insert into tags (`tag`, `ctime`, `utime`) values (?, ?, ?);';
+    let params = [tag, ctime, utime];
+    let connection = dbutil.createConnection();
     connection.connect();
     connection.query(insertSql, params, (error, result) => {
         if (error == null) {
@@ -18,9 +18,9 @@ function insertTag(tag, ctime, utime, callback) {
 
 // 查询指定tag
 function queryTag(tag, callback) {
-    var selectSql = 'select * from tags where tag = ?;';
-    var params = [tag]
-    var connection = dbutil.createConnection();
+    let selectSql = 'select * from tags where tag = ?;';
+    let params = [tag]
+    let connection = dbutil.createConnection();
     connection.connect();
     connection.query(selectSql, params, (error, result) => {
         if (error == null) {
@@ -34,8 +34,8 @@ function queryTag(tag, callback) {
 
 // 查询所有tag
 function queryAllTag(callback) {
-    var selectSql = 'select * from tags;';
-    var connection = dbutil.createConnection();
+    let selectSql = 'select * from tags;';
+    let connection = dbutil.createConnection();
     connection.connect();
     connection.query(selectSql, (error, result) => {
         if (error == null) {

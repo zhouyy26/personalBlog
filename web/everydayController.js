@@ -1,7 +1,7 @@
-let everydayDao = require('../dao/everydayDao.js');
-let timeUtil = require('../util/timeUtil.js');
-let respUtil = require('../util/respUtil.js');
-let path = new Map();
+const everydayDao = require('../dao/everydayDao.js');
+const timeUtil = require('../util/timeUtil.js');
+const respUtil = require('../util/respUtil.js');
+const path = new Map();
 
 // 编辑每日一句
 function editEveryday(request, response) {

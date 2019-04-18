@@ -1,7 +1,7 @@
-var express = require('express');
-var globalConf = require('./config.js');
-var loader = require('./loader.js');
-var app = new express();
+const express = require('express');
+const globalConf = require('./config.js');
+const loader = require('./loader.js');
+const app = new express();
 
 // 设置静态文件的路径，实现页面跳转
 app.use(express.static('./page/'));
@@ -54,8 +54,7 @@ app.get('/queryBlogByTag', loader.get('/queryBlogByTag'));
 // 查询与tag对应的博客数
 app.get('/queryBlogCountByTag', loader.get('/queryBlogCountByTag'));
 
-
 // 监听端口
-app.listen(globalConf['prot'], function () {
+app.listen(globalConf['port'], function () {
    console.log('服务已启动');
 });
